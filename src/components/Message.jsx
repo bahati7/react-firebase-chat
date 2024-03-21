@@ -1,17 +1,23 @@
-import React from 'react'
+import React from 'react';
+import {auth}from '../firebase'
 
 const style={
     message:`flex items-center shadow-xl m-4 py-2 px-3 rounded-tl-full rounded-tr-full`,
-    name:`fixed mt-[-4rem] text-gray-600 text-xs`,
-    sent:`bg-blue text-white flex-row-reverse text-end float-right rounded-bl-full`,
-    reveived:`bg-gray text-black float-left rounded-br-full`
+    name:`absolute mt-[-4rem] text-gray-600 text-xs`,
+    sent:`bg-[#007F73] text-white flex-row-reverse text-end float-right rounded-bl-full`,
+    reveived:`bg-[#DDDDDD] text-black float-left rounded-br-full`
 }
 
 const Message = ({message}) => {
+  const messageClass=
+  message.uid===auth.currentUser.uid
+  ? `${style.sent}`
+  :`${style.reveived}`;
+
   return (
     <div>
-        <div className={style.message}>
-            <p className={style.name}>Phil</p>
+        <div className={`${style.message} ${messageClass}`}>
+            <p className={style.name}>{message.name}</p>
             <p>{message.text}</p>
 
         </div>

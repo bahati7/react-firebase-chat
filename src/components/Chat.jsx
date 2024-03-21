@@ -7,6 +7,7 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
+import SendMessage from "./SendMessage";
 
 const style = {
   main: `flex flex-col p-[10px] relative`,
@@ -40,6 +41,7 @@ const Chat = () => {
        {/* <Message/> */}
       </main>
       {/* send message component */}
+      <SendMessage scroll={scroll}/>
       <span ref={scroll}></span>
     </>
   );
