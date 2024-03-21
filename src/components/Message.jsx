@@ -7,12 +7,12 @@ const style={
     reveived:`bg-gray text-black float-left rounded-br-full`
 }
 
-const Message = () => {
+const Message = ({message}) => {
   return (
     <div>
         <div className={style.message}>
             <p className={style.name}>Phil</p>
-            <p>im on my way</p>
+            <p>{message.text}</p>
 
         </div>
     </div>
